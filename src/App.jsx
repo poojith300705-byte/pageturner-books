@@ -20,22 +20,20 @@ function App() {
 
       <main>
         <Routes>
-
-        <Route
-          path="/"
-          element={
-            <BookList
-              addToWishlist={addToWishlist}
-              wishlist={wishlist}
-            />
-          }
-        />
+          <Route
+            path="/"
+            element={
+              <BookList
+                addToWishlist={addToWishlist}
+                wishlist={wishlist}
+              />
+            }
+          />
 
           <Route
             path="/book/:id"
             element={<BookDetails />}
           />
-
         </Routes>
       </main>
     </div>

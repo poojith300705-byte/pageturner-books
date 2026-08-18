@@ -38,10 +38,10 @@ function BookList({ addToWishlist, wishlist }) {
       <div className="book-list">
         {filteredBooks.map((book) => (
           <BookCard
-           key={book.id}
-           book={book}
-           addToWishlist={addToWishlist}
-           wishlist={wishlist}
+            key={book.id}
+            book={book}
+            addToWishlist={addToWishlist}
+            wishlist={wishlist}
           />
         ))}
       </div>

@@ -1,13 +1,10 @@
 import { Link } from "react-router-dom"
 
-function BookCard({
-    book,
-    addToWishlist,
-    wishlist
-  }) {
+function BookCard({ book, addToWishlist, wishlist }) {
+  const isWishlisted = wishlist.some((item) => item.id === book.id)
+
   return (
     <div className="book-card">
-
       <Link to={`/book/${book.id}`}>
         <h2>{book.title}</h2>
       </Link>
@@ -29,14 +26,13 @@ function BookCard({
       </p>
 
       <button
-    onClick={() => addToWishlist(book)}
-    disabled={wishlist.includes(book.id)}
+        onClick={() => addToWishlist(book)}
+        disabled={isWishlisted}
       >
-    {wishlist.includes(book.id)
-        ? "✓ Added to Wishlist"
-        : "Add to Wishlist ❤️"}
+        {isWishlisted
+          ? "✓ Added to Wishlist"
+          : "Add to Wishlist ❤️"}
       </button>
-
     </div>
   )
 }
