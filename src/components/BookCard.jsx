@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom"
 
 function BookCard({ book, addToWishlist, wishlist }) {
-  const isWishlisted = wishlist.some((item) => item.id === book.id)
+  const isWishlisted = wishlist.some(
+    (item) => (item.id || item._id) === book.id
+  )
 
   return (
     <div className="book-card">
+      {book.coverImage && (
+        <img
+          src={book.coverImage}
+          alt={book.title}
+          className="book-cover"
+        />
+      )}
+
       <Link to={`/book/${book.id}`}>
         <h2>{book.title}</h2>
       </Link>
@@ -22,7 +32,11 @@ function BookCard({ book, addToWishlist, wishlist }) {
       </p>
 
       <p>
-        <strong>Rating:</strong> ⭐ {book.rating}
+        <strong>Rating:</strong> ⭐ {book.rating || "N/A"}
+      </p>
+
+      <p>
+        <strong>Stock:</strong> {book.stockQuantity}
       </p>
 
       <button
